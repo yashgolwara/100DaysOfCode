@@ -1,11 +1,14 @@
 package com.yash.learning.day002;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LongestSubstringWithoutRepeatingCharacters {
 
 	static final int NO_OF_CHARS = 256;
 
+	// to get length
 	public int lengthOfLongestSubstring(String s) {
 
 		int n = s.length();
@@ -28,21 +31,38 @@ public class LongestSubstringWithoutRepeatingCharacters {
 
 			// Update result if we get a larger window
 			res = Math.max(res, j - i + 1);
-			
+
 			// Update last index of j.
 			lastIndex[s.charAt(j)] = j;
-			
+
 		}
 
 		return res;
 
 	}
-	
-	public static void main(String[] args) 
-	{
-	    String s = "GEEKSFORGEEKS";
-	    LongestSubstringWithoutRepeatingCharacters obj = new LongestSubstringWithoutRepeatingCharacters();
-	    System.out.print(obj.lengthOfLongestSubstring(s));
+
+	// to get the string as output
+
+	String getUniqueCharacterSubstring(String input) {
+		Map<Character, Integer> visited = new HashMap<>();
+		String output = "";
+		for (int start = 0, end = 0; end < input.length(); end++) {
+			char currChar = input.charAt(end);
+			if (visited.containsKey(currChar)) {
+				start = Math.max(visited.get(currChar) + 1, start);
+			}
+			if (output.length() < end - start + 1) {
+				output = input.substring(start, end + 1);
+			}
+			visited.put(currChar, end);
+		}
+		return output;
+	}
+
+	public static void main(String[] args) {
+		String s = "GEEKSFORGEEKS";
+		LongestSubstringWithoutRepeatingCharacters obj = new LongestSubstringWithoutRepeatingCharacters();
+		System.out.print(obj.getUniqueCharacterSubstring(s));
 	}
 
 }
