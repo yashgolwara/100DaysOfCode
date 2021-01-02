@@ -1,4 +1,4 @@
-package com.yash.learning.day001;
+package day001;
 
 import java.util.HashMap;
 
