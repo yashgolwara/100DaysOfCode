@@ -1,4 +1,4 @@
-package com.yash.learning.day002;
+package day002;
 
 import java.util.Arrays;
 import java.util.HashMap;

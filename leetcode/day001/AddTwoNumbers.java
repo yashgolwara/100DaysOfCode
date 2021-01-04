@@ -1,4 +1,4 @@
-package com.yash.learning.day001;
+package day001;
 
 class ListNode {
 

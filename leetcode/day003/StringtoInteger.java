@@ -1,11 +1,23 @@
 package day003;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+
 public class StringtoInteger {
 
 	public static void main(String[] args) {
 		StringtoInteger obj = new StringtoInteger();
 		String s = "   -487";
 		System.out.println(obj.myAtoi(s));
+		
+		String str = "she sells sea shells";
+		String rex = "SsS";
+		String replace = "x";
+		Pattern p = Pattern.compile(rex);
+		Matcher m = p.matcher(str);
+		String val = m.replaceAll(replace);
+		System.out.println(val);
 	}
 
 	public int myAtoi(String s) {
@@ -44,4 +56,7 @@ public class StringtoInteger {
 		}
 		return (int) result * flag;
 	}
+	
+	
+	
 }
